@@ -2,7 +2,7 @@
 title: "Universe Roleplay"
 description: "Um futuro servidor de Minecraft com foco em RP/RPG/MMORPG."
 date: "2025-12-22"
-cover: "/images/projeto1.jpg"
+cover: "/images/projects/projeto1.jpg"
 status: "Em Desenvolvimento"
 links: "https://discord.gg/6GnaCR3EVu"
 tags: ["Minecraft", "Server", "Multiplayer"]

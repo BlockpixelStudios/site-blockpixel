@@ -1,4 +1,5 @@
 // components/Navbar.tsx
+import Link from 'next/link';
 export default function Navbar() {
   return (
     <nav className="fixed top-0 w-full z-50 bg-blockpixel-bg/80 backdrop-blur-md border-b border-white/10">

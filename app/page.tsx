@@ -20,7 +20,7 @@ export default function Home() {
           />
           
           <h1 className="text-5xl md:text-7xl font-bold tracking-tighter mb-6 bg-gradient-to-b from-white to-white/60 bg-clip-text text-transparent">
-            CRIAMOS EXPERIÊNCIAS <br />
+            CRIAMOS EXPERIENCIAS <br />
             <span className="text-blockpixel-primary">ALÉM DO CÓDIGO.</span>
           </h1>
           

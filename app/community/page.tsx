@@ -31,12 +31,12 @@ export default function CommunityPage() {
              </div>
           </div>
 
-          <h2 className="text-3xl font-bold mb-4">Blockpixel Universe</h2>
+          <h2 className="text-3xl font-bold mb-4">🧊┇Blockpixel Studios</h2>
           <p className="text-white/40 mb-10 uppercase tracking-widest text-sm font-bold">Oficial Discord Server</p>
           
           <div className="grid grid-cols-2 md:grid-cols-3 gap-6 mb-12 text-left">
             <div className="p-4 bg-white/5 rounded-2xl border border-white/5">
-              <span className="block text-blockpixel-primary font-bold text-xl">+1.000</span>
+              <span className="block text-blockpixel-primary font-bold text-xl">+60</span>
               <span className="text-xs text-white/40">Membros</span>
             </div>
             <div className="p-4 bg-white/5 rounded-2xl border border-white/5">

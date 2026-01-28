@@ -34,9 +34,11 @@ export default function Footer() {
           <div>
             <h4 className="font-bold mb-6 text-white">Conecte-se</h4>
             <ul className="space-y-4 text-white/40 text-sm">
-              <li><a href="#" className="hover:text-blockpixel-primary transition-colors">Discord</a></li>
-              <li><a href="#" className="hover:text-blockpixel-primary transition-colors">Instagram</a></li>
-              <li><a href="#" className="hover:text-blockpixel-primary transition-colors">Twitter (X)</a></li>
+              <li><a href="https://discord.gg/EdKAMp7yAJ" target="_blank" className="hover:text-blockpixel-primary transition-colors">Discord</a></li>
+              <li><a href="https://youtube.com/@blockpixel_studios" target="_blank" className="hover:text-blockpixel-primary transition-colors">YouTube</a></li>
+              <li><a href="https://www.instagram.com/blockpixel_studios" target="_blank" className="hover:text-blockpixel-primary transition-colors">Instagram</a></li>
+              <li><a href="https://x.com/blockpixel82420" target="_blank" className="hover:text-blockpixel-primary transition-colors">Twitter / X</a></li>
+              <li><a href="https://www.tiktok.com/@blockpixelstudiosbrasil" target="_blank" className="hover:text-blockpixel-primary transition-colors">TikTok</a></li>
             </ul>
           </div>
         </div>

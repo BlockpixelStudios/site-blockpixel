@@ -12,13 +12,15 @@ async function getProjectData(slug: string) {
   return { ...project, contentHtml: processedContent.toString() };
 }
 
-export default async function ProjectSingle({ params }: { params: { slug: string } }) {
-  const project = await getProjectData(params.slug);
-  if (!project) return <div className="pt-40 text-center">Projeto não encontrado.</div>;
+// O segredo: params como Promise e await params
+export default async function ProjectSingle({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const project = await getProjectData(slug);
+  
+  if (!project) return <div className="pt-40 text-center min-h-screen">Projeto não encontrado.</div>;
 
   return (
     <main className="min-h-screen pt-32 pb-20">
-      {/* Banner de Topo */}
       <div className="relative h-[50vh] w-full mb-12">
         <Image src={project.frontmatter.cover} alt={project.frontmatter.title} fill className="object-cover" priority />
         <div className="absolute inset-0 bg-blockpixel-bg/60 backdrop-blur-sm" />
@@ -31,18 +33,17 @@ export default async function ProjectSingle({ params }: { params: { slug: string
       </div>
 
       <div className="max-w-4xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-3 gap-12">
-        <div className="lg:col-span-2 prose-blockpixel" dangerouslySetInnerHTML={{ __html: project.contentHtml }} />
+        <div className="lg:col-span-2 prose prose-invert prose-blockpixel max-w-none" dangerouslySetInnerHTML={{ __html: project.contentHtml }} />
         
-        {/* Sidebar de Informações */}
         <aside className="space-y-8">
           <div className="p-6 bg-white/5 border border-white/10 rounded-2xl">
             <h3 className="font-bold mb-4 border-b border-white/10 pb-2">Detalhes</h3>
             <ul className="space-y-4 text-sm">
               <li><span className="text-white/40 block">Data:</span> {project.frontmatter.date}</li>
-              <li><span className="text-white/40 block">Tecnologias:</span> {project.frontmatter.tags?.join(', ')}</li>
+              <li><span className="text-white/40 block">Tecnologias:</span> {Array.isArray(project.frontmatter.tags) ? project.frontmatter.tags.join(', ') : project.frontmatter.tags}</li>
             </ul>
             {project.frontmatter.links && (
-              <a href={project.frontmatter.links} target="_blank" className="mt-8 block text-center py-3 bg-blockpixel-primary rounded-xl font-bold hover:bg-blockpixel-accent transition-all">
+              <a href={project.frontmatter.links} target="_blank" rel="noopener noreferrer" className="mt-8 block text-center py-3 bg-blockpixel-primary rounded-xl font-bold hover:bg-blockpixel-accent transition-all">
                 Acessar Projeto
               </a>
             )}
@@ -51,5 +52,9 @@ export default async function ProjectSingle({ params }: { params: { slug: string
       </div>
     </main>
   );
-              }
-      
+}
+
+export async function generateStaticParams() {
+  const projects = getItemsByFolder('projects');
+  return projects.map((p) => ({ slug: p.slug }));
+        }

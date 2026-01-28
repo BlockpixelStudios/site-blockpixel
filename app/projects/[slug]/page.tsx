@@ -40,7 +40,7 @@ export default async function ProjectSingle({ params }: { params: Promise<{ slug
             <h3 className="font-bold mb-4 border-b border-white/10 pb-2">Detalhes</h3>
             <ul className="space-y-4 text-sm">
               <li><span className="text-white/40 block">Data:</span> {project.frontmatter.date}</li>
-              <li><span className="text-white/40 block">Tecnologias:</span> {Array.isArray(project.frontmatter.tags) ? project.frontmatter.tags.join(', ') : project.frontmatter.tags}</li>
+              <li><span className="text-white/40 block">Tags:</span> {Array.isArray(project.frontmatter.tags) ? project.frontmatter.tags.join(', ') : project.frontmatter.tags}</li>
             </ul>
             {project.frontmatter.links && (
               <a href={project.frontmatter.links} target="_blank" rel="noopener noreferrer" className="mt-8 block text-center py-3 bg-blockpixel-primary rounded-xl font-bold hover:bg-blockpixel-accent transition-all">

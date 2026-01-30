@@ -56,16 +56,16 @@ export default function Navbar() {
 
       {/* Mobile Menu Overlay */}
       <div className={`
-        fixed inset-0 top-20 bg-blockpixel-bg/95 backdrop-blur-xl transition-all duration-300 md:hidden
-        ${isOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}
+        fixed inset-0 top-0 bg-blockpixel-bg/40 backdrop-blur-2xl transition-all duration-500 md:hidden z-[-1]
+        ${isOpen ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-10 pointer-events-none'}
       `}>
-        <div className="flex flex-col items-center justify-center h-[calc(100vh-80px)] gap-8 text-2xl font-bold">
+        <div className="flex flex-col items-center justify-center h-screen gap-10 text-2xl font-bold bg-gradient-to-b from-blockpixel-bg/80 to-transparent">
           {navLinks.map((link) => (
             <Link 
               key={link.href} 
               href={link.href} 
               onClick={toggleMenu}
-              className="hover:text-blockpixel-primary transition-colors"
+              className="hover:text-blockpixel-primary transition-colors tracking-wide"
             >
               {link.label}
             </Link>
@@ -73,13 +73,9 @@ export default function Navbar() {
           <Link 
             href="/community" 
             onClick={toggleMenu}
-            className="px-8 py-3 bg-blockpixel-primary rounded-full"
+            className="px-10 py-4 bg-blockpixel-primary rounded-full shadow-lg shadow-blockpixel-primary/20"
           >
             Comunidade
           </Link>
         </div>
       </div>
-    </nav>
-  );
-            }
-              

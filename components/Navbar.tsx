@@ -1,15 +1,14 @@
-'use client'; // Necessário para usar o useState
+'use client';
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { Menu, X } from 'lucide-react'; // Importando ícones bonitos
+import { Menu, X } from 'lucide-react';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => setIsOpen(!isOpen);
 
-  // Links para não repetir código
   const navLinks = [
     { href: '/projects', label: 'Projetos' },
     { href: '/partners', label: 'Parceiros' },
@@ -18,10 +17,10 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className="fixed top-0 w-full z-50 bg-blockpixel-bg/80 backdrop-blur-md border-b border-white/10">
-      <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+    <nav className="fixed top-0 w-full z-[100] bg-blockpixel-bg/80 backdrop-blur-md border-b border-white/10">
+      <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between relative z-[101]">
         {/* Logo */}
-        <Link href="/" onClick={() => setIsOpen(false)}>
+        <Link href="/" onClick={() => setIsOpen(false)} className="relative z-[102]">
           <img src="/logo-text.png" alt="Blockpixel" className="h-8 w-auto" />
         </Link>
 
@@ -31,14 +30,14 @@ export default function Navbar() {
             <Link 
               key={link.href} 
               href={link.href} 
-              className="hover:text-blockpixel-primary transition-colors font-medium"
+              className="hover:text-blockpixel-primary transition-colors font-medium text-sm lg:text-base"
             >
               {link.label}
             </Link>
           ))}
           <Link 
             href="/community" 
-            className="px-5 py-2 bg-blockpixel-primary rounded-full font-bold hover:bg-blockpixel-accent transition-all"
+            className="px-5 py-2 bg-blockpixel-primary rounded-full font-bold hover:bg-blockpixel-accent transition-all text-sm lg:text-base"
           >
             Comunidade
           </Link>
@@ -46,7 +45,7 @@ export default function Navbar() {
 
         {/* Mobile Button */}
         <button 
-          className="md:hidden text-white p-2 focus:outline-none" 
+          className="md:hidden text-white p-2 focus:outline-none relative z-[102]" 
           onClick={toggleMenu}
           aria-label="Toggle Menu"
         >
@@ -54,12 +53,12 @@ export default function Navbar() {
         </button>
       </div>
 
-      {/* Mobile Menu Overlay */}
+      {/* Mobile Menu Overlay com Glassmorphism Real */}
       <div className={`
-        fixed inset-0 top-0 bg-blockpixel-bg/40 backdrop-blur-2xl transition-all duration-500 md:hidden z-[-1]
-        ${isOpen ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-10 pointer-events-none'}
+        fixed inset-0 bg-blockpixel-bg/40 backdrop-blur-2xl transition-all duration-500 md:hidden z-[99]
+        ${isOpen ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-full pointer-events-none'}
       `}>
-        <div className="flex flex-col items-center justify-center h-screen gap-10 text-2xl font-bold bg-gradient-to-b from-blockpixel-bg/80 to-transparent">
+        <div className="flex flex-col items-center justify-center h-screen gap-10 text-2xl font-bold bg-gradient-to-b from-blockpixel-bg/90 via-blockpixel-bg/40 to-transparent">
           {navLinks.map((link) => (
             <Link 
               key={link.href} 
@@ -73,9 +72,12 @@ export default function Navbar() {
           <Link 
             href="/community" 
             onClick={toggleMenu}
-            className="px-10 py-4 bg-blockpixel-primary rounded-full shadow-lg shadow-blockpixel-primary/20"
+            className="px-10 py-4 bg-blockpixel-primary rounded-full shadow-lg shadow-blockpixel-primary/30"
           >
             Comunidade
           </Link>
         </div>
       </div>
+    </nav>
+  );
+}

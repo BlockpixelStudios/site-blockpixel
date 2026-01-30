@@ -4,19 +4,32 @@
 
 :root {
   --foreground-rgb: 255, 255, 255;
-  --background-start-rgb: 63, 65, 201; /* Seu azul #3F41C9 */
-  --background-end-rgb: 63, 65, 201;
+  /* Um azul bem profundo e elegante (#0A0B1E) */
+  --background-rgb: 10, 11, 30; 
 }
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: rgb(var(--background-start-rgb));
+  background-color: rgb(var(--background-rgb));
+  /* Adicionando um leve degradê para não ficar plano demais */
+  background-image: radial-gradient(
+    circle at top center, 
+    rgba(63, 65, 201, 0.15) 0%, 
+    rgba(10, 11, 30, 1) 80%
+  );
+  background-attachment: fixed;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  min-height: 100vh;
 }
 
-/* Isso vai ajudar a segurar o tamanho das imagens enquanto o Tailwind não carrega */
+/* Melhorando a legibilidade global */
+::selection {
+  background-color: #5b5dff;
+  color: white;
+}
+
 img {
   max-width: 100%;
   height: auto;

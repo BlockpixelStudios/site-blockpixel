@@ -106,9 +106,9 @@ export default function Home() {
       {/* --- NOSSOS NÚMEROS --- */}
       <section className="py-32 px-6 max-w-7xl mx-auto flex flex-wrap justify-between gap-12 text-white">
         {[
-          { label: 'Projetos', value: '15+' },
-          { label: 'Jogadores', value: '50K+' },
-          { label: 'Membros', value: '5K+' },
+          { label: 'Projetos', value: '5+' },
+          { label: 'Jogadores', value: '50+' },
+          { label: 'Membros', value: '100+' },
         ].map((stat, i) => (
           <div key={i} className="flex flex-col">
             <span className="text-6xl md:text-8xl font-black outline-text tracking-tighter">

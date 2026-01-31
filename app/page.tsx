@@ -109,7 +109,7 @@ export default function Home() {
             <h2 className="text-5xl font-black mb-8 tracking-tighter">FAÇA PARTE DO NOSSO DISCORD.</h2>
             <p className="text-white/40 mb-10 text-lg">Conecte-se com outros criadores e acompanhe os bastidores em tempo real.</p>
             <a 
-              href="https://discord.gg/blockpixel" 
+              href="https://discord.gg/EdKAMp7yAJ" 
               target="_blank" 
               className="inline-block px-12 py-4 bg-blockpixel-primary rounded-none font-black hover:skew-x-[-10deg] transition-all"
             >

@@ -34,3 +34,9 @@ img {
   max-width: 100%;
   height: auto;
 }
+
+/* Contorno nos números */
+.outline-text {
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.3);
+}

@@ -19,7 +19,7 @@ export default function Home() {
             playsInline 
             className="w-full h-full object-cover opacity-60"
           >
-            <source src="/hero-bg.mp4" type="video/mp4" />
+            <source src="/hero-background.mp4" type="video/mp4" />
             {/* Fallback caso o vídeo não carregue: */}
             <img src="/hero-fallback.jpg" className="w-full h-full object-cover" alt="Blockpixel Hero" />
           </video>

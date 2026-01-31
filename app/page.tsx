@@ -3,102 +3,121 @@ import Image from 'next/image';
 import { getItemsByFolder } from '@/lib/markdown';
 
 export default function Home() {
-  // Pegamos os últimos 3 projetos para exibir um destaque
-  const allProjects = getItemsByFolder('projects');
-  const featuredProjects = allProjects.slice(0, 3);
+  const featuredProjects = getItemsByFolder('projects').slice(0, 3);
+  const latestPosts = getItemsByFolder('blog').slice(0, 3);
 
   return (
-    <main className="min-h-screen">
-      {/* --- SEÇÃO HERO --- */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden px-6">
-        {/* Brilho de fundo (Aurora) */}
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-blockpixel-primary/20 blur-[120px] rounded-full -z-10 animate-pulse" />
-        
-        <div className="text-center max-w-5xl">
-          <span className="inline-block py-1 px-4 rounded-full bg-white/5 border border-white/10 text-blockpixel-primary text-sm font-bold mb-6 tracking-widest uppercase animate-bounce">
-            O Futuro é Blockpixel
-          </span>
-          <h1 className="text-6xl md:text-8xl font-black mb-8 tracking-tighter leading-none">
-            CRIANDO <span className="text-transparent bg-clip-text bg-gradient-to-r from-blockpixel-primary to-blockpixel-accent">EXPERIÊNCIAS</span> <br /> 
-            ALÉM DOS LIMITES.
-          </h1>
-          <p className="text-xl md:text-2xl text-white/60 max-w-3xl mx-auto mb-10 leading-relaxed">
-            Estúdio criativo especializado em mundos imersivos, inovação e tecnologia para o metaverso e games.
-          </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-            <Link href="/projects" className="px-10 py-4 bg-blockpixel-primary rounded-full font-bold text-lg hover:bg-blockpixel-accent transition-all hover:scale-105 shadow-lg shadow-blockpixel-primary/20">
-              Ver Projetos
-            </Link>
-            <Link href="/about" className="px-10 py-4 bg-white/5 border border-white/10 rounded-full font-bold text-lg hover:bg-white/10 transition-all backdrop-blur-sm">
-              Nossa História
-            </Link>
-          </div>
+    <main className="min-h-screen bg-[#0A0B1E]">
+      {/* --- HERO CINEMATOGRÁFICA --- */}
+      <section className="relative h-screen w-full flex items-center justify-center overflow-hidden">
+        {/* Background: Vídeo ou Imagem de Impacto */}
+        <div className="absolute inset-0 z-0">
+          <video 
+            autoPlay 
+            muted 
+            loop 
+            playsInline 
+            className="w-full h-full object-cover opacity-60"
+          >
+            <source src="/hero-bg.mp4" type="video/mp4" />
+            {/* Fallback caso o vídeo não carregue: */}
+            <img src="/hero-fallback.jpg" className="w-full h-full object-cover" alt="Blockpixel Hero" />
+          </video>
+          {/* Overlay para dar profundidade e garantir leitura do logo/navbar */}
+          <div className="absolute inset-0 bg-gradient-to-b from-blockpixel-bg/80 via-transparent to-blockpixel-bg" />
+        </div>
+
+        <div className="relative z-10 text-center animate-fade-in">
+          <img src="/logo-icon.png" alt="Blockpixel" className="w-32 h-32 mx-auto mb-8 animate-pulse" />
+          <h2 className="text-white/40 tracking-[0.5em] uppercase text-sm font-bold">Inovação • Criatividade • Experiência</h2>
         </div>
 
         {/* Scroll Indicator */}
-        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce opacity-40">
-          <div className="w-1 h-12 bg-gradient-to-b from-blockpixel-primary to-transparent rounded-full" />
+        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-30">
+          <span className="text-[10px] uppercase tracking-widest font-bold">Scroll</span>
+          <div className="w-[1px] h-16 bg-gradient-to-b from-white to-transparent" />
         </div>
       </section>
 
-      {/* --- SEÇÃO NÚMEROS (STATS) --- */}
-      <section className="py-20 px-6 border-y border-white/5 bg-white/[0.02]">
-        <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-12">
-          {[
-            { label: 'Projetos Entregues', value: '+15' },
-            { label: 'Jogadores Ativos', value: '50K' },
-            { label: 'Países Atingidos', value: '+10' },
-            { label: 'Membros no Discord', value: '5K' },
-          ].map((stat, i) => (
-            <div key={i} className="text-center group">
-              <h2 className="text-4xl md:text-5xl font-black text-white mb-2 group-hover:text-blockpixel-primary transition-colors">{stat.value}</h2>
-              <p className="text-white/40 uppercase tracking-widest text-xs font-bold">{stat.label}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* --- SEÇÃO DESTAQUES (PROJETOS) --- */}
+      {/* --- CRIAÇÕES (PROJETOS) --- */}
       <section className="py-32 px-6 max-w-7xl mx-auto">
-        <div className="flex flex-col md:flex-row items-end justify-between mb-16 gap-6">
-          <div className="max-w-2xl">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">PROJETOS EM <span className="text-blockpixel-primary">FOCO</span></h2>
-            <p className="text-white/50 text-lg">Uma seleção do que andamos construindo nos laboratórios da Blockpixel.</p>
-          </div>
-          <Link href="/projects" className="text-blockpixel-primary font-bold hover:underline">Ver galeria completa →</Link>
+        <div className="mb-16">
+          <h2 className="text-sm font-black text-blockpixel-primary uppercase tracking-[0.3em] mb-2">Portfolio</h2>
+          <h3 className="text-5xl font-bold italic tracking-tighter">CRIAÇÕES.</h3>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {featuredProjects.map((project) => (
-            <Link key={project.slug} href={`/projects/${project.slug}`} className="group relative aspect-[4/5] overflow-hidden rounded-[2.5rem] border border-white/10">
+            <Link key={project.slug} href={`/projects/${project.slug}`} className="group relative aspect-video overflow-hidden rounded-sm border border-white/5">
               <Image 
                 src={project.frontmatter.cover} 
                 alt={project.frontmatter.title}
                 fill
-                className="object-cover transition-transform duration-700 group-hover:scale-110"
+                className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-blockpixel-bg via-blockpixel-bg/20 to-transparent opacity-80" />
-              <div className="absolute bottom-0 p-8">
-                <span className="text-xs font-bold text-blockpixel-primary uppercase tracking-widest">{project.frontmatter.status}</span>
-                <h3 className="text-2xl font-bold mt-2">{project.frontmatter.title}</h3>
+              <div className="absolute inset-0 bg-black/40 group-hover:bg-black/10 transition-colors" />
+              <div className="absolute bottom-6 left-6">
+                <h4 className="text-xl font-bold translate-y-2 group-hover:translate-y-0 transition-transform">{project.frontmatter.title}</h4>
               </div>
             </Link>
           ))}
         </div>
       </section>
 
-      {/* --- SEÇÃO CALL TO ACTION (CTA) --- */}
-      <section className="py-32 px-6">
-        <div className="max-w-5xl mx-auto bg-gradient-to-br from-blockpixel-primary/20 to-blockpixel-accent/5 border border-white/10 rounded-[3rem] p-12 md:p-20 text-center relative overflow-hidden">
-           <div className="absolute -top-24 -right-24 w-64 h-64 bg-blockpixel-primary/20 blur-[100px] rounded-full" />
-           <h2 className="text-4xl md:text-6xl font-bold mb-8">PRONTO PARA O PRÓXIMO NÍVEL?</h2>
-           <p className="text-xl text-white/60 mb-10 max-w-2xl mx-auto">Seja um parceiro, junte-se à nossa comunidade ou faça parte da nossa equipe.</p>
-           <Link href="/community" className="inline-block px-12 py-5 bg-white text-black font-black rounded-full hover:bg-blockpixel-primary hover:text-white transition-all">
-             ENTRAR NA COMUNIDADE
-           </Link>
+      {/* --- NOVIDADES (BLOG) --- */}
+      <section className="py-32 px-6 bg-white/[0.01] border-y border-white/5">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex justify-between items-end mb-16">
+            <div>
+              <h2 className="text-sm font-black text-blockpixel-primary uppercase tracking-[0.3em] mb-2">Updates</h2>
+              <h3 className="text-5xl font-bold italic tracking-tighter">NOVIDADES.</h3>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+            {latestPosts.map((post) => (
+              <Link key={post.slug} href={`/blog/${post.slug}`} className="group">
+                <div className="relative aspect-[16/9] mb-6 overflow-hidden">
+                  <Image src={post.frontmatter.cover} alt={post.frontmatter.title} fill className="object-cover opacity-50 group-hover:opacity-100 transition-opacity" />
+                </div>
+                <span className="text-blockpixel-primary text-xs font-bold">{post.frontmatter.date}</span>
+                <h4 className="text-2xl font-bold mt-2 group-hover:text-blockpixel-primary transition-colors">{post.frontmatter.title}</h4>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* --- NOSSOS NÚMEROS --- */}
+      <section className="py-32 px-6 max-w-7xl mx-auto flex flex-wrap justify-between gap-12">
+        {[
+          { label: 'Projetos', value: '15+' },
+          { label: 'Jogadores', value: '50K+' },
+          { label: 'Membros', value: '5K+' },
+        ].map((stat, i) => (
+          <div key={i} className="flex flex-col">
+            <span className="text-6xl md:text-8xl font-black outline-text tracking-tighter">{stat.value}</span>
+            <span className="text-blockpixel-primary font-bold uppercase tracking-widest text-xs mt-2">{stat.label}</span>
+          </div>
+        ))}
+      </section>
+
+      {/* --- COMUNIDADE (DISCORD) --- */}
+      <section className="py-40 px-6 text-center">
+        <div className="max-w-3xl mx-auto p-1 bg-gradient-to-r from-transparent via-blockpixel-primary to-transparent">
+          <div className="bg-[#0A0B1E] py-20 px-10">
+            <h2 className="text-5xl font-black mb-8 tracking-tighter">FAÇA PARTE DO NOSSO DISCORD.</h2>
+            <p className="text-white/40 mb-10 text-lg">Conecte-se com outros criadores e acompanhe os bastidores em tempo real.</p>
+            <a 
+              href="https://discord.gg/blockpixel" 
+              target="_blank" 
+              className="inline-block px-12 py-4 bg-blockpixel-primary rounded-none font-black hover:skew-x-[-10deg] transition-all"
+            >
+              ENTRAR AGORA
+            </a>
+          </div>
         </div>
       </section>
     </main>
   );
-        }
-                
+                }
